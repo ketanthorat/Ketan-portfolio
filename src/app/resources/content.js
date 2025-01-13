@@ -1,15 +1,15 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-    firstName: 'Selene',
-    lastName:  'Yu',
+    firstName: 'Ketan',
+    lastName:  'Thorat',
     get name() {
         return `${this.firstName} ${this.lastName}`;
     },
-    role:      'Design Engineer',
+    role:      'Robotics & AI Engineer',
     avatar:    '/images/avatar.jpg',
-    location:  'Asia/Jakarta',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-    languages: ['English', 'Bahasa']  // optional: Leave the array empty if you don't want to display languages
+    location:  'Asia/India',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+    languages: ['English', 'Hindi', 'Marathi', 'German']  // optional: Leave the array empty if you don't want to display languages
 }
 
 const newsletter = {
@@ -24,22 +24,32 @@ const social = [
     {
         name: 'GitHub',
         icon: 'github',
-        link: 'https://github.com/once-ui-system/nextjs-starter',
+        link: 'https://github.com/ketanthorat',
     },
     {
         name: 'LinkedIn',
         icon: 'linkedin',
-        link: 'https://www.linkedin.com/company/once-ui/',
+        link: 'https://www.linkedin.com/in/k2thorat/',
     },
     {
         name: 'X',
         icon: 'x',
-        link: '',
+        link: 'https://x.com/ketanthorat_ai',
+    },
+    {
+        name: 'Instagram',
+        icon: 'Instagram',
+        link: 'https://www.instagram.com/ketanthorat.ai',
+    },
+    {
+        name: 'Youtube',
+        icon: 'Youtube',
+        link: 'https://www.youtube.com/@ketanthorat-ai',
     },
     {
         name: 'Email',
         icon: 'email',
-        link: 'mailto:example@gmail.com',
+        link: 'ketanthorat.ai@gmail.com',
     },
 ]
 
@@ -47,8 +57,8 @@ const home = {
     label: 'Home',
     title: `${person.name}'s Portfolio`,
     description: `Portfolio website showcasing my work as a ${person.role}`,
-    headline: <>Design engineer and builder</>,
-    subline: <>I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive<br/> user experiences. After hours, I build my own projects.</>
+    headline: <>Robotics, AI, IoT, Machine Learning</>,
+    subline: <>I'm , a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive<br/> user experiences. After hours, I build my own projects.</>
 }
 
 const about = {
@@ -64,24 +74,23 @@ const about = {
     },
     calendar: {
         display: true,
-        link: 'https://cal.com'
+        link: 'https://calendly.com/ketanthorat'
     },
     intro: {
         display: true,
         title: 'Introduction',
-        description: <>Selene is a Jakarta-based design engineer with a passion for transforming complex challenges into simple, elegant design solutions. Her work spans digital interfaces, interactive experiences, and the convergence of design and technology.</>
+        description: <>Hi, I'm Ketan Thorat—a passionate robotics engineer, innovator, and entrepreneur driving advancements in robotics, AI, IoT, and automation. With a knack for solving real-world problems, I specialize in creating intelligent robotic systems and building solutions that bridge technology with impact. Explore my portfolio to discover my journey, projects, and vision for the future of robotics and automation.</>
     },
     work: {
         display: true, // set to false to hide this section
         title: 'Work Experience',
         experiences: [
             {
-                company: 'FLY',
-                timeframe: '2022 - Present',
-                role: 'Senior Design Engineer',
+                company: 'Akudo Technologies Private Limited',
+                timeframe: 'Dec 2021 - Oct 2022',
+                role: 'Community Management Intern',
                 achievements: [
-                    <>Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
-                    <>Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.</>
+                    <>Akudo - A Neo bank for Teenagers, providing a cool debit card & offers alot of cashbacks which helps them to save their money. A app which enrolls teens to learn Financial Skills.</>,
                 ],
                 images: [ // optional: leave the array empty if you don't want to display images
                     {

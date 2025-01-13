@@ -104,7 +104,7 @@ const about = {
                 images: []
             },
             {
-                company: 'Akudo Yaro',
+                company: 'Akudo',
                 timeframe: 'Dec 2021 - Oct 2022',
                 role: 'Community Management Intern',
                 achievements: [

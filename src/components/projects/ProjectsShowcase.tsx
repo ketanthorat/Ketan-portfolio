@@ -201,7 +201,7 @@ export function ProjectsShowcase() {
         <Flex fillWidth direction="column" gap="xl" paddingX="l" paddingY="xl">
             {/* Header Section */}
             <RevealFx translateY="4">
-                <Flex direction="column" gap="m" maxWidth="xl" alignItems="center" textAlign="center">
+                <Flex direction="column" gap="m" maxWidth="xl" alignItems="center" style={{ textAlign: 'center' }}>
                     <Heading variant="display-strong-xl">
                         🚀 Robotics & AI Projects
                     </Heading>

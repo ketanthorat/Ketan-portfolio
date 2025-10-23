@@ -11,21 +11,18 @@ interface Project {
 }
 
 const projectsRow1: Project[] = [
-    { id: '1', title: 'Autonomous Robot', category: 'Robotics', image: '🤖' },
-    { id: '2', title: 'AI Assistant', category: 'AI/ML', image: '🧠' },
-    { id: '3', title: 'IoT Dashboard', category: 'IoT', image: '📊' },
-    { id: '4', title: 'ROS Navigation', category: 'ROS', image: '🗺️' },
-    { id: '5', title: 'Computer Vision', category: 'AI/ML', image: '👁️' },
-    { id: '6', title: 'Smart Home', category: 'IoT', image: '🏠' },
+    { id: '1', title: 'ROS2 Workshop', category: 'Robotics', image: '/images/ROS2.jpeg' },
+    { id: '2', title: 'Gemma LLM Workshop', category: 'AI/ML', image: '/images/Gemma LLM.jpeg' },
+    { id: '3', title: 'Running LLM', category: 'AI/ML', image: '/images/Running LLM.jpeg' },
+    { id: '4', title: 'Fusion of Hardware', category: 'Robotics', image: '/images/Fusion of Hardware.jpeg' },
 ];
 
 const projectsRow2: Project[] = [
-    { id: '7', title: 'Drone Control', category: 'Robotics', image: '🚁' },
-    { id: '8', title: 'ML Pipeline', category: 'AI/ML', image: '⚙️' },
-    { id: '9', title: 'Sensor Network', category: 'IoT', image: '📡' },
-    { id: '10', title: 'Path Planning', category: 'ROS', image: '🛤️' },
-    { id: '11', title: 'Edge AI', category: 'AI/ML', image: '💻' },
-    { id: '12', title: 'Robotic Arm', category: 'Robotics', image: '🦾' },
+    { id: '5', title: 'Convergence', category: 'IoT', image: '/images/Convergence.jpeg' },
+    { id: '6', title: 'GSM Irrigation', category: 'IoT', image: '/images/GSM.jpeg' },
+    { id: '7', title: 'Revolution of AI', category: 'AI/ML', image: '/images/Revolution of AI.jpeg' },
+    { id: '8', title: 'IEEE Event', category: 'Community', image: '/images/IEEE.jpeg' },
+    { id: '9', title: 'FinCulture', category: 'Community', image: '/images/Finculture.jpeg' },
 ];
 
 export function ProjectsGallery() {
@@ -35,11 +32,11 @@ export function ProjectsGallery() {
                 <div className={styles.scrollTrack} data-direction="left">
                     {[...projectsRow1, ...projectsRow1].map((project, index) => (
                         <div key={`${project.id}-${index}`} className={styles.projectCard}>
-                            <div className={styles.projectEmoji}>{project.image}</div>
-                            <div className={styles.projectInfo}>
-                                <div className={styles.projectTitle}>{project.title}</div>
-                                <div className={styles.projectCategory}>{project.category}</div>
-                            </div>
+                            <img 
+                                src={project.image} 
+                                alt={project.title}
+                                className={styles.projectImage}
+                            />
                         </div>
                     ))}
                 </div>
@@ -49,11 +46,11 @@ export function ProjectsGallery() {
                 <div className={styles.scrollTrack} data-direction="right">
                     {[...projectsRow2, ...projectsRow2].map((project, index) => (
                         <div key={`${project.id}-${index}`} className={styles.projectCard}>
-                            <div className={styles.projectEmoji}>{project.image}</div>
-                            <div className={styles.projectInfo}>
-                                <div className={styles.projectTitle}>{project.title}</div>
-                                <div className={styles.projectCategory}>{project.category}</div>
-                            </div>
+                            <img 
+                                src={project.image} 
+                                alt={project.title}
+                                className={styles.projectImage}
+                            />
                         </div>
                     ))}
                 </div>

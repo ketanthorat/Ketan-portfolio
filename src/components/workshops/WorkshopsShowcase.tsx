@@ -27,7 +27,7 @@ const workshopsData: Workshop[] = [
         description: 'Comprehensive seminar covering ROS2 vs ROS1 comparison, different versions, and hardware demonstrations including prosthetic hand control with live demos in Rviz and Gazebo.',
         topics: ['ROS2', 'ROS1', 'Prosthetic Hand', 'Rviz', 'Gazebo', 'Hardware Demo'],
         attendees: '60',
-        image: '/images/workshops/ros2-beginners.jpg',
+        image: '/images/ROS2.jpeg',
         category: 'ros'
     },
     {
@@ -39,7 +39,7 @@ const workshopsData: Workshop[] = [
         description: 'Hands-on workshop on building AI assistants using edge devices, covering Text-to-Speech, Speech-to-Text, ALSA driver usage, Hugging Face transformers, and edge deployment strategies.',
         topics: ['Gemma LLM', 'TTS', 'STT', 'ALSA Driver', 'Hugging Face', 'Edge Deployment'],
         attendees: '193',
-        image: '/images/workshops/ai-assistant.jpg',
+        image: '/images/Gemma LLM.jpeg',
         category: 'ai-ml'
     },
     {
@@ -51,7 +51,7 @@ const workshopsData: Workshop[] = [
         description: 'Technical seminar focused on deploying Large Language Models on edge devices using Ollama, Hugging Face transformers, pre-trained LLMs, and IoT edge deployment techniques.',
         topics: ['Ollama', 'Hugging Face', 'Transformers', 'Pre-trained LLMs', 'IoT', 'Edge Deployment'],
         attendees: '180',
-        image: '/images/workshops/llms-edge.jpg',
+        image: '/images/Running LLM.jpeg',
         category: 'ai-ml'
     },
     {
@@ -63,7 +63,7 @@ const workshopsData: Workshop[] = [
         description: 'Seminar exploring the intersection of open-source hardware and robotics, covering ROS, electronics fundamentals, and visualization tools like Rviz, Rqt, and Gazebo.',
         topics: ['Open Source Hardware', 'ROS', 'Electronics', 'Rviz', 'Rqt', 'Gazebo'],
         attendees: '56',
-        image: '/images/workshops/hardware-foss.jpg',
+        image: '/images/Fusion of Hardware.jpeg',
         category: 'community'
     },
     {
@@ -75,7 +75,7 @@ const workshopsData: Workshop[] = [
         description: 'Webinar discussing startup entrepreneurship in robotics, covering business strategies, technical challenges, and techniques for building successful robotics ventures.',
         topics: ['Startup', 'Entrepreneurship', 'Robotics Business', 'Innovation', 'Strategy'],
         attendees: 'N/A',
-        image: '/images/workshops/robotics-startup.jpg',
+        image: '/images/Finculture.jpeg',
         category: 'community'
     },
     {
@@ -87,7 +87,7 @@ const workshopsData: Workshop[] = [
         description: 'Seminar exploring the convergence of three major technologies: IoT, ROS, and open-source hardware, demonstrating how they work together in modern robotics applications.',
         topics: ['IoT', 'ROS', 'Open Source Hardware', 'AI Integration', 'Robotics'],
         attendees: '142',
-        image: '/images/workshops/convergence.jpg',
+        image: '/images/Convergence.jpeg',
         category: 'robotics'
     },
     {
@@ -99,7 +99,7 @@ const workshopsData: Workshop[] = [
         description: 'Technical seminar covering IoT applications in agriculture, ROS integration, TensorFlow Lite for edge computing, PyTorch implementations, and open-source hardware solutions.',
         topics: ['IoT', 'ROS', 'TensorFlow Lite', 'PyTorch', 'Open Source Hardware', 'Agriculture'],
         attendees: '160',
-        image: '/images/workshops/gsm-irrigation.jpg',
+        image: '/images/GSM.jpeg',
         category: 'iot'
     },
     {
@@ -111,7 +111,7 @@ const workshopsData: Workshop[] = [
         description: 'Comprehensive webinar covering the basics of robotics including mechanisms, Robot Operating System (ROS), and the revolutionary impact of AI in modern robotics.',
         topics: ['Robotics Basics', 'Mechanisms', 'ROS', 'AI in Robotics', 'Automation'],
         attendees: '120',
-        image: '/images/workshops/revolution-robotics.jpg',
+        image: '/images/Revolution of AI.jpeg',
         category: 'robotics'
     },
     {
@@ -123,7 +123,7 @@ const workshopsData: Workshop[] = [
         description: 'Served as a judge for the IEEE MSIT RNA Club hackathon, evaluating innovative projects and providing mentorship to 96 participants across various technology domains.',
         topics: ['Hackathon', 'Judging', 'Mentorship', 'Innovation', 'Technology'],
         attendees: '96',
-        image: '/images/workshops/ieee-hackathon.jpg',
+        image: '/images/IEEE.jpeg',
         category: 'community'
     }
 ];
@@ -187,11 +187,23 @@ export function WorkshopsShowcase() {
                         <div className={styles.workshopCard}>
                             {/* Workshop Image */}
                             <div className={styles.workshopImage}>
-                                <div className={styles.imagePlaceholder}>
-                                    <Text variant="display-strong-xl">
-                                        {workshop.title.charAt(0)}
-                                    </Text>
-                                </div>
+                                {workshop.image ? (
+                                    <img 
+                                        src={workshop.image} 
+                                        alt={workshop.title}
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'cover'
+                                        }}
+                                    />
+                                ) : (
+                                    <div className={styles.imagePlaceholder}>
+                                        <Text variant="display-strong-xl">
+                                            {workshop.title.charAt(0)}
+                                        </Text>
+                                    </div>
+                                )}
                                 {workshop.attendees && (
                                     <div className={styles.attendeesBadge}>
                                         <Text variant="body-default-xs">👥 {workshop.attendees}</Text>

@@ -25,7 +25,7 @@ const featuredWorkshops: Workshop[] = [
         description: 'Comprehensive seminar covering ROS2 vs ROS1 comparison, different versions, and hardware demonstrations including prosthetic hand control with live demos in Rviz and Gazebo.',
         topics: ['ROS2', 'ROS1', 'Prosthetic Hand', 'Rviz', 'Gazebo', 'Hardware Demo'],
         attendees: '60',
-        image: '/images/workshops/ros2-beginners.jpg'
+        image: '/images/ROS2.jpeg'
     },
     {
         id: 'build-ai-assistant-2025',
@@ -36,7 +36,7 @@ const featuredWorkshops: Workshop[] = [
         description: 'Hands-on workshop on building AI assistants using edge devices, covering Text-to-Speech, Speech-to-Text, ALSA driver usage, Hugging Face transformers, and edge deployment strategies.',
         topics: ['Gemma LLM', 'TTS', 'STT', 'ALSA Driver', 'Hugging Face', 'Edge Deployment'],
         attendees: '193',
-        image: '/images/workshops/ai-assistant.jpg'
+        image: '/images/Gemma LLM.jpeg'
     }
 ];
 

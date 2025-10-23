@@ -81,6 +81,21 @@
     transform: scale(1.2) rotate(5deg);
 }
 
+.projectImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+}
+
+.projectCard:hover .projectImage {
+    transform: scale(1.05);
+}
+
 .projectInfo {
     text-align: center;
     display: flex;

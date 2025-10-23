@@ -165,7 +165,7 @@ export default function Blog({ params }: BlogParams) {
 						direction="column"
 						gap="24"
 						alignItems="center"
-						textAlign="center">
+						style={{ textAlign: 'center' }}>
 						<Button
 							href="/blog"
 							weight="default"

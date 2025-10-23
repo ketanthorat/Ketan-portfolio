@@ -273,7 +273,7 @@ export function ProjectsShowcase() {
                                         </Flex>
 
                                         {/* Achievements */}
-                                        <Flex direction="column" gap="10">
+                                        <Flex direction="column" gap="s">
                                             {project.achievements.map((achievement, idx) => (
                                                 <Flex key={idx} gap="s" alignItems="flex-start">
                                                     <Text variant="body-default-s" style={{ flexShrink: 0, marginTop: '2px' }}>✓</Text>

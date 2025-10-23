@@ -65,7 +65,7 @@ export default function MasonryGrid() {
                 alignItems="center"
                 gap="16"
                 marginBottom="xl"
-                textAlign="center">
+                style={{ textAlign: 'center' }}>
                 <RevealFx translateY="4">
                     <Heading variant="display-strong-xl">
                         {gallery.title}

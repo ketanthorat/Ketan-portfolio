@@ -27,7 +27,7 @@ export default function Post({ post, thumbnail, featured = false, index = 0 }: P
                     position="relative"
                     direction="column"
                     fillWidth
-                    height="100%"
+                    style={{ height: '100%' }}
                     className={styles.cardContent}>
                     {post.metadata.image && thumbnail && (
                         <div className={styles.imageWrapper}>

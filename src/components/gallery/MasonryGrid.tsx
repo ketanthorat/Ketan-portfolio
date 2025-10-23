@@ -91,7 +91,7 @@ export default function MasonryGrid() {
                 breakpointCols={breakpointColumnsObj}
                 className={styles.masonryGrid}
                 columnClassName={styles.masonryGridColumn}>
-                {gallery.images.map((image, index) => (
+                {gallery.images.map((image: any, index: number) => (
                     <RevealFx key={index} translateY="20" delay={index * 0.05}>
                         <div className={styles.gridItemWrapper}>
                             <SmartImage

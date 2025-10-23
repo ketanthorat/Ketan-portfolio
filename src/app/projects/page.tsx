@@ -1,6 +1,5 @@
-import { getPosts } from '@/app/utils/utils';
 import { Flex } from '@/once-ui/components';
-import { Projects } from '@/components/work/Projects';
+import { ProjectsShowcase } from '@/components/projects/ProjectsShowcase';
 import { baseURL } from '@/app/resources';
 import { person, projects } from '@/app/resources/content';
 
@@ -16,7 +15,7 @@ export async function generateMetadata() {
 			title,
 			description,
 			type: 'website',
-			url: `https://${baseURL}/work/`,
+			url: `https://${baseURL}/projects/`,
 			images: [
 				{
 					url: ogImage,
@@ -33,12 +32,10 @@ export async function generateMetadata() {
 	};
 }
 
-export default function Work() {
-    let allProjects = getPosts(['src', 'app', 'work', 'projects']);
-
+export default function Projects() {
     return (
         <Flex
-			fillWidth maxWidth="m"
+			fillWidth maxWidth="xl"
 			direction="column">
             <script
                 type="application/ld+json"
@@ -50,22 +47,15 @@ export default function Work() {
                         headline: projects.title,
                         description: projects.description,
                         url: `https://${baseURL}/projects`,
-                        image: `${baseURL}/og?title=Design%20Projects`,
+                        image: `${baseURL}/og?title=Robotics%20Projects`,
                         author: {
                             '@type': 'Person',
                             name: person.name,
                         },
-                        hasPart: allProjects.map(project => ({
-                            '@type': 'CreativeWork',
-                            headline: project.metadata.title,
-                            description: project.metadata.summary,
-                            url: `https://${baseURL}/projects/${project.slug}`,
-                            image: `${baseURL}/${project.metadata.image}`,
-                        })),
                     }),
                 }}
             />
-            <Projects />
+            <ProjectsShowcase />
         </Flex>
     );
 }

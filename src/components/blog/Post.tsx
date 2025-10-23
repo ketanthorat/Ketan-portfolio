@@ -1,70 +1,96 @@
 "use client";
 
-import { Flex, Heading, SmartImage, SmartLink, Tag, Text } from '@/once-ui/components';
+import { Flex, Heading, SmartImage, SmartLink, Tag, Text, RevealFx } from '@/once-ui/components';
 import styles from './Posts.module.scss';
 import { formatDate } from '@/app/utils/formatDate';
 
 interface PostProps {
     post: any;
     thumbnail: boolean;
+    featured?: boolean;
+    index?: number;
 }
 
-export default function Post({ post, thumbnail }: PostProps) {
+export default function Post({ post, thumbnail, featured = false, index = 0 }: PostProps) {
     return (
-        <SmartLink
-            className={styles.hover}
-            style={{
-                textDecoration: 'none',
-                margin: '0',
-                height: 'fit-content',
-            }}
-            key={post.slug}
-            href={`/blog/${post.slug}`}>
-            <Flex
-                position="relative"
-                mobileDirection="column"
-                fillWidth paddingY="12" paddingX="16" gap="32">
-                {post.metadata.image && thumbnail && (
-                    <Flex
-                        maxWidth={20} fillWidth
-                        className={styles.image}>
-                        <SmartImage
-                            priority
-                            sizes="640px"
-                            style={{
-                                cursor: 'pointer',
-                                border: '1px solid var(--neutral-alpha-weak)'
-                            }}
-                            radius="m"
-                            src={post.metadata.image}
-                            alt={'Thumbnail of ' + post.metadata.title}
-                            aspectRatio="16 / 9"
-                        />
-                    </Flex>
-                )}
+        <RevealFx translateY="20" delay={index * 0.1}>
+            <SmartLink
+                className={`${styles.postCard} ${featured ? styles.featured : ''}`}
+                style={{
+                    textDecoration: 'none',
+                    margin: '0',
+                    height: '100%',
+                }}
+                key={post.slug}
+                href={`/blog/${post.slug}`}>
                 <Flex
                     position="relative"
-                    fillWidth gap="8"
-                    direction="column" justifyContent="center">
-                    <Heading
-                        as="h2"
-                        variant="heading-strong-l"
-                        wrap="balance">
-                        {post.metadata.title}
-                    </Heading>
-                    <Text
-                        variant="label-default-s"
-                        onBackground="neutral-weak">
-                        {formatDate(post.metadata.publishedAt, false)}
-                    </Text>
-                    { post.metadata.tag &&
-                        <Tag
-                            className="mt-8"
-                            label={post.metadata.tag}
-                            variant="neutral" />
-                    }
+                    direction="column"
+                    fillWidth
+                    height="100%"
+                    className={styles.cardContent}>
+                    {post.metadata.image && thumbnail && (
+                        <div className={styles.imageWrapper}>
+                            <SmartImage
+                                priority={featured}
+                                sizes={featured ? "1200px" : "640px"}
+                                className={styles.postImage}
+                                radius="m"
+                                src={post.metadata.image}
+                                alt={'Thumbnail of ' + post.metadata.title}
+                                aspectRatio={featured ? "21 / 9" : "16 / 9"}
+                            />
+                            <div className={styles.imageOverlay}></div>
+                        </div>
+                    )}
+                    <Flex
+                        position="relative"
+                        fillWidth
+                        gap="12"
+                        padding="24"
+                        direction="column"
+                        justifyContent="space-between"
+                        flex={1}>
+                        <Flex direction="column" gap="12">
+                            {post.metadata.tag && (
+                                <Tag
+                                    size="s"
+                                    label={post.metadata.tag}
+                                    variant="brand" />
+                            )}
+                            <Heading
+                                as="h2"
+                                variant={featured ? "heading-strong-xl" : "heading-strong-l"}
+                                wrap="balance">
+                                {post.metadata.title}
+                            </Heading>
+                            {post.metadata.summary && (
+                                <Text
+                                    variant="body-default-m"
+                                    onBackground="neutral-medium"
+                                    className={styles.summary}>
+                                    {post.metadata.summary}
+                                </Text>
+                            )}
+                        </Flex>
+                        <Flex alignItems="center" gap="8">
+                            <Text
+                                variant="label-default-s"
+                                onBackground="neutral-weak">
+                                {formatDate(post.metadata.publishedAt, false)}
+                            </Text>
+                            {post.metadata.readTime && (
+                                <>
+                                    <Text variant="label-default-s" onBackground="neutral-weak">•</Text>
+                                    <Text variant="label-default-s" onBackground="neutral-weak">
+                                        {post.metadata.readTime} min read
+                                    </Text>
+                                </>
+                            )}
+                        </Flex>
+                    </Flex>
                 </Flex>
-            </Flex>
-        </SmartLink>
+            </SmartLink>
+        </RevealFx>
     );
 }

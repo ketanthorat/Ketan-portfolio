@@ -1,0 +1,686 @@
+/* Page Container */
+.pageContainer {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Hero Section - Full Height */
+.heroSection {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.gradientOrb1 {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-alpha-weak) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: float 20s ease-in-out infinite;
+  opacity: 0.4;
+}
+
+.gradientOrb2 {
+  position: absolute;
+  bottom: -20%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--brand-alpha-weak) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: float 25s ease-in-out infinite reverse;
+  opacity: 0.3;
+}
+
+.gridPattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--neutral-alpha-weak) 1px, transparent 1px),
+    linear-gradient(90deg, var(--neutral-alpha-weak) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.3;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  animation: fadeInUp 1s ease-out;
+}
+
+.avatarWrapper {
+  position: relative;
+  margin-bottom: 1rem;
+  animation: avatarFloat 3s ease-in-out infinite;
+}
+
+.avatarWrapper::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: linear-gradient(135deg, var(--accent-alpha-medium), var(--brand-alpha-medium));
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.5;
+  filter: blur(12px);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes avatarFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.scrollLine {
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--accent-alpha-medium), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* Featured Section */
+.featuredSection {
+  position: relative;
+  width: 100%;
+  padding: 8rem 0 6rem;
+  background: linear-gradient(to bottom, transparent, var(--neutral-alpha-weak) 50%);
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 0 2rem;
+}
+
+.featuredContent {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.workshopsSection {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
+.waveTransition {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.waveTransition svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 120px;
+}
+
+/* Content Creation Section */
+.contentSection {
+  position: relative;
+  width: 100%;
+  padding: 8rem 0;
+  background: var(--neutral-alpha-weak);
+  overflow: hidden;
+}
+
+.contentBackground {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, var(--accent-alpha-weak) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, var(--brand-alpha-weak) 0%, transparent 50%);
+  opacity: 0.2;
+  filter: blur(60px);
+}
+
+.contentContainer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.contentHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.contentBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.topicsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.topicCard {
+  padding: 1.5rem 2rem;
+  background: var(--surface);
+  border: 1px solid var(--neutral-alpha-medium);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.topicCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--accent-alpha-medium), var(--brand-alpha-medium));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.topicCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-alpha-medium);
+  box-shadow: 0 8px 24px var(--neutral-alpha-medium);
+}
+
+.topicCard:hover::before {
+  transform: scaleX(1);
+}
+
+.platformsSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.platformsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.platformCard {
+  padding: 3rem 2rem;
+  background: var(--surface);
+  border: 1px solid var(--neutral-alpha-medium);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.platformCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--accent-alpha-medium), var(--brand-alpha-medium));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.platformCard::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-alpha-weak) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.platformCard:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-alpha-medium);
+  box-shadow: 0 16px 48px var(--neutral-alpha-medium);
+}
+
+.platformCard:hover::before {
+  transform: scaleX(1);
+}
+
+.platformCard:hover::after {
+  opacity: 1;
+}
+
+.platformCard:hover .platformIcon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.platformIcon {
+  width: 80px;
+  height: 80px;
+  background: var(--neutral-alpha-weak);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.platformArrow {
+  margin-top: 0.5rem;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-on-background-strong);
+}
+
+.platformArrow svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.platformCard:hover .platformArrow {
+  opacity: 1;
+}
+
+.platformCard:hover .platformArrow svg {
+  transform: translateX(4px);
+}
+
+/* Projects Section */
+.projectsSection {
+  position: relative;
+  width: 100%;
+  padding: 8rem 0;
+  overflow: hidden;
+}
+
+.projectsBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.floatingShape1 {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 300px;
+  height: 300px;
+  border: 2px solid var(--accent-alpha-weak);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  opacity: 0.2;
+  animation: morphShape 15s ease-in-out infinite;
+}
+
+.floatingShape2 {
+  position: absolute;
+  bottom: 20%;
+  left: 5%;
+  width: 250px;
+  height: 250px;
+  border: 2px solid var(--brand-alpha-weak);
+  border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+  opacity: 0.2;
+  animation: morphShape 20s ease-in-out infinite reverse;
+}
+
+.projectsContainer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Newsletter Section */
+.newsletterSection {
+  position: relative;
+  width: 100%;
+  padding: 8rem 0;
+  overflow: hidden;
+}
+
+.newsletterBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.newsletterGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    var(--accent-alpha-weak) 0%,
+    transparent 50%,
+    var(--brand-alpha-weak) 100%
+  );
+  opacity: 0.15;
+}
+
+.newsletterContent {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes morphShape {
+  0%, 100% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+  }
+  50% {
+    border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+    transform: rotate(180deg) scale(1.1);
+  }
+  75% {
+    border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .heroSection {
+    min-height: 90vh;
+  }
+
+  .gradientOrb1,
+  .gradientOrb2 {
+    width: 400px;
+    height: 400px;
+  }
+
+  .featuredSection,
+  .contentSection,
+  .projectsSection,
+  .newsletterSection {
+    padding: 6rem 0;
+  }
+
+  .sectionHeader,
+  .contentHeader {
+    margin-bottom: 3rem;
+  }
+
+  .topicsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .platformsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    min-height: 100vh;
+    padding: 2rem 0;
+  }
+
+  .heroContent {
+    padding: 0 1.5rem;
+  }
+
+  .gradientOrb1,
+  .gradientOrb2 {
+    width: 300px;
+    height: 300px;
+    filter: blur(60px);
+  }
+
+  .gridPattern {
+    background-size: 30px 30px;
+  }
+
+  .scrollIndicator {
+    bottom: 2rem;
+  }
+
+  .scrollLine {
+    height: 40px;
+  }
+
+  .featuredSection,
+  .contentSection,
+  .projectsSection,
+  .newsletterSection {
+    padding: 4rem 0;
+  }
+
+  .featuredContent,
+  .contentContainer,
+  .projectsContainer,
+  .newsletterContent {
+    padding: 0 1.5rem;
+  }
+
+  .workshopsSection {
+    padding: 2rem 0;
+  }
+
+  .sectionHeader,
+  .contentHeader {
+    margin-bottom: 2rem;
+  }
+
+  .contentBody {
+    gap: 3rem;
+  }
+
+  .topicsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .topicCard {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .platformCard {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .platformIcon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .waveTransition {
+    height: 60px;
+  }
+
+  .waveTransition svg {
+    height: 60px;
+  }
+
+  .floatingShape1,
+  .floatingShape2 {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    min-height: 100vh;
+  }
+
+  .gradientOrb1,
+  .gradientOrb2 {
+    width: 250px;
+    height: 250px;
+  }
+
+  .featuredSection,
+  .contentSection,
+  .projectsSection,
+  .newsletterSection {
+    padding: 3rem 0;
+  }
+
+  .featuredContent,
+  .contentContainer,
+  .projectsContainer,
+  .newsletterContent {
+    padding: 0 1rem;
+  }
+
+  .workshopsSection {
+    padding: 1.5rem 0;
+  }
+
+  .contentBody {
+    gap: 2.5rem;
+  }
+
+  .topicCard {
+    padding: 1rem 1.25rem;
+  }
+
+  .platformCard {
+    padding: 2rem 1.25rem;
+  }
+
+  .platformIcon {
+    width: 60px;
+    height: 60px;
+    font-size: 2.5rem;
+  }
+}

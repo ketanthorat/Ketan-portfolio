@@ -1,7 +1,586 @@
-.hover {
-    transition: var(--transition-micro-medium);
+// Posts Container
+.postsContainer {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    scroll-behavior: smooth;
+}
 
+// Category Filter
+.categoryFilter {
+    margin-bottom: 40px;
+    padding: 16px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    @media (max-width: 900px) {
+        margin-bottom: 32px;
+        padding: 12px 0;
+    }
+    
+    @media (max-width: 600px) {
+        margin-bottom: 24px;
+        padding: 8px 0;
+    }
+}
+
+.categoryButton {
+    padding: 14px 28px;
+    border-radius: 32px;
+    border: 2px solid var(--neutral-border-medium);
+    background: var(--neutral-background-weak);
+    color: var(--neutral-on-background-strong);
+    font-size: var(--font-size-body-s);
+    font-weight: var(--font-weight-strong);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: linear-gradient(135deg, 
+            rgba(var(--brand-solid-rgb), 0.15) 0%, 
+            rgba(var(--accent-solid-rgb), 0.15) 100%
+        );
+        transform: translate(-50%, -50%);
+        transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                    height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
     &:hover {
-        transform: translateX(var(--static-space-8));
+        background: var(--neutral-background-medium);
+        border-color: var(--brand-border-strong);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        
+        &::before {
+            width: 400px;
+            height: 400px;
+        }
+    }
+    
+    &.active {
+        background: linear-gradient(135deg, 
+            var(--brand-solid-strong) 0%, 
+            var(--accent-solid-strong) 100%
+        );
+        color: white;
+        border-color: transparent;
+        box-shadow: 0 6px 24px rgba(var(--brand-solid-rgb), 0.4);
+        transform: translateY(-2px);
+        
+        &::before {
+            display: none;
+        }
+        
+        &:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 28px rgba(var(--brand-solid-rgb), 0.5);
+        }
+    }
+}
+
+// Featured Section
+.featuredSection {
+    margin-bottom: 48px;
+    width: 100%;
+    
+    @media (max-width: 900px) {
+        margin-bottom: 40px;
+    }
+    
+    @media (max-width: 600px) {
+        margin-bottom: 32px;
+    }
+}
+
+// Posts Grid - Row Column Format
+.postsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fadeInGrid 0.6s ease-out;
+    
+    &.columns-1 {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+    
+    &.columns-2 {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 1000px;
+        
+        @media (max-width: 900px) {
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+    }
+    
+    &.columns-3 {
+        grid-template-columns: repeat(3, 1fr);
+        
+        @media (max-width: 1200px) {
+            gap: 28px;
+        }
+        
+        @media (max-width: 900px) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        
+        @media (max-width: 600px) {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+    }
+}
+
+@keyframes fadeInGrid {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Post Card - Equal Size Cards
+.postCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 520px;
+    background: var(--neutral-background-weak);
+    border: 1px solid var(--neutral-border-medium);
+    border-radius: var(--radius-l);
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, 
+            var(--brand-solid-strong) 0%, 
+            var(--accent-solid-strong) 100%
+        );
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 2;
+    }
+    
+    &::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+            circle,
+            rgba(var(--brand-solid-rgb), 0.08) 0%,
+            transparent 70%
+        );
+        opacity: 0;
+        transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+    }
+    
+    &:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 24px 56px rgba(0, 0, 0, 0.15);
+        border-color: var(--brand-border-strong);
+        
+        &::before {
+            transform: scaleX(1);
+        }
+        
+        &::after {
+            opacity: 1;
+        }
+        
+        .postImage {
+            transform: scale(1.1) rotate(1deg);
+        }
+        
+        .imageOverlay {
+            opacity: 0.4;
+        }
+    }
+    
+    &.featured {
+        grid-column: 1 / -1;
+        height: 400px;
+        
+        &::before {
+            height: 5px;
+        }
+        
+        .imageWrapper {
+            height: 400px;
+        }
+        
+        .cardContent {
+            flex-direction: row;
+            
+            > div {
+                flex: 1;
+            }
+        }
+        
+        &:hover {
+            transform: translateY(-10px) scale(1.01);
+        }
+        
+        @media (max-width: 900px) {
+            height: auto;
+            min-height: 500px;
+            
+            .imageWrapper {
+                height: 300px;
+            }
+            
+            .cardContent {
+                flex-direction: column;
+            }
+        }
+    }
+    
+    @media (max-width: 1200px) {
+        height: 500px;
+    }
+    
+    @media (max-width: 900px) {
+        height: 480px;
+    }
+    
+    @media (max-width: 600px) {
+        height: 460px;
+    }
+    
+    @media (max-width: 480px) {
+        height: 440px;
+    }
+}
+
+.cardContent {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    overflow: hidden;
+    
+    > div {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        flex: 1;
+    }
+    
+    &::after {
+        content: 'Read More →';
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        background: linear-gradient(135deg, 
+            var(--brand-solid-strong) 0%, 
+            var(--accent-solid-strong) 100%
+        );
+        color: white;
+        border-radius: 24px;
+        font-size: 13px;
+        font-weight: 600;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        box-shadow: 0 4px 12px rgba(var(--brand-solid-rgb), 0.3);
+        letter-spacing: 0.5px;
+    }
+}
+
+.postCard:hover .cardContent::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.postCard.featured .cardContent {
+    padding: 32px;
+    
+    &::after {
+        padding: 12px 24px;
+        font-size: 15px;
+        bottom: 24px;
+        right: 24px;
+    }
+}
+
+// Image Wrapper - Fixed Height
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, 
+        var(--brand-background-medium) 0%, 
+        var(--accent-background-medium) 100%
+    );
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            135deg,
+            rgba(var(--brand-solid-rgb), 0.15) 0%,
+            rgba(var(--accent-solid-rgb), 0.15) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        z-index: 1;
+    }
+    
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    @media (max-width: 900px) {
+        height: 220px;
+    }
+    
+    @media (max-width: 600px) {
+        height: 200px;
+    }
+    
+    @media (max-width: 480px) {
+        height: 180px;
+    }
+}
+
+.postCard:hover .imageWrapper {
+    &::before {
+        opacity: 1;
+    }
+    
+    &::after {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.postImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.imageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    z-index: 1;
+}
+
+// Summary Text - Limited Lines
+.summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.6;
+    flex: 1;
+    
+    @media (max-width: 900px) {
+        -webkit-line-clamp: 2;
+    }
+}
+
+// Empty State
+.emptyState {
+    padding: var(--static-space-64);
+    text-align: center;
+    background: var(--neutral-background-weak);
+    border: 1px solid var(--neutral-border-medium);
+    border-radius: var(--radius-l);
+    
+    @media (max-width: 768px) {
+        padding: var(--static-space-40);
+    }
+}
+
+// Animations
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Smooth Scroll Behavior
+.postsContainer {
+    scroll-behavior: smooth;
+}
+
+// Responsive Adjustments
+@media (max-width: 1200px) {
+    .featuredSection {
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 900px) {
+    .categoryButton {
+        padding: 10px 20px;
+        font-size: 13px;
+        
+        &:hover {
+            transform: translateY(-2px) scale(1.03);
+        }
+    }
+    
+    .categoryFilter {
+        margin-bottom: 32px;
+        padding: 12px 0;
+    }
+    
+    .featuredSection {
+        margin-bottom: 32px;
+    }
+    
+    .postCard {
+        &:hover {
+            transform: translateY(-8px) scale(1.01);
+        }
+        
+        &.featured:hover {
+            transform: translateY(-8px) scale(1.01);
+        }
+    }
+    
+    .cardContent {
+        padding: 20px;
+        
+        &::after {
+            padding: 8px 16px;
+            font-size: 12px;
+            bottom: 16px;
+            right: 16px;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .categoryFilter {
+        gap: 8px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .categoryButton {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    .featuredSection {
+        margin-bottom: 24px;
+    }
+    
+    .postCard {
+        &:hover {
+            transform: translateY(-6px);
+        }
+    }
+    
+    .cardContent {
+        padding: 18px;
+        
+        &::after {
+            padding: 6px 14px;
+            font-size: 11px;
+            bottom: 14px;
+            right: 14px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .postCard {
+        &:hover {
+            transform: translateY(-4px);
+        }
+    }
+    
+    .cardContent {
+        padding: 16px;
     }
 }

@@ -34,7 +34,12 @@ export async function generateMetadata() {
 
 export default function Gallery() {
     return (
-        <Flex fillWidth>
+        <Flex 
+            fillWidth 
+            direction="column" 
+            paddingX="l" 
+            paddingY="xl" 
+            gap="xl">
             <script
 				type="application/ld+json"
 				suppressHydrationWarning

@@ -7,7 +7,7 @@ import { Fade, Flex, ToggleButton } from "@/once-ui/components"
 import styles from '@/components/Header.module.scss'
 
 import { routes, display } from '@/app/resources'
-import { person, home, about, blog, work, gallery } from '@/app/resources/content';
+import { person, home, about, blog, projects, workshops, gallery } from '@/app/resources/content';
 
 type TimeDisplayProps = {
     timeZone: string;
@@ -108,19 +108,19 @@ export const Header = () => {
                                         selected={pathname === "/about"}/>
                                 </>
                             )}
-                            { routes['/work'] && (
+                            { routes['/projects'] && (
                                 <>
                                     <ToggleButton
                                         className="s-flex-hide"
                                         prefixIcon="grid"
-                                        href="/work"
-                                        label={work.label}
-                                        selected={pathname.startsWith('/work')}/>
+                                        href="/projects"
+                                        label={projects.label}
+                                        selected={pathname.startsWith('/projects')}/>
                                     <ToggleButton
                                         className="s-flex-show"
                                         prefixIcon="grid"
-                                        href="/work"
-                                        selected={pathname.startsWith('/work')}/>
+                                        href="/projects"
+                                        selected={pathname.startsWith('/projects')}/>
                                 </>
                             )}
                             { routes['/blog'] && (
@@ -136,6 +136,21 @@ export const Header = () => {
                                         prefixIcon="book"
                                         href="/blog"
                                         selected={pathname.startsWith('/blog')}/>
+                                </>
+                            )}
+                            { routes['/workshops'] && (
+                                <>
+                                    <ToggleButton
+                                        className="s-flex-hide"
+                                        prefixIcon="calendar"
+                                        href="/workshops"
+                                        label={workshops.label}
+                                        selected={pathname.startsWith('/workshops')}/>
+                                    <ToggleButton
+                                        className="s-flex-show"
+                                        prefixIcon="calendar"
+                                        href="/workshops"
+                                        selected={pathname.startsWith('/workshops')}/>
                                 </>
                             )}
                             { routes['/gallery'] && (

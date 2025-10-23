@@ -81,6 +81,7 @@ export default async function RootLayout({
 			data-border={style.border}
 			data-surface={style.surface}
 			data-transition={style.transition}
+			style={{ scrollBehavior: 'smooth' }}
 			className={classNames(
 				primary.variable,
 				secondary ? secondary.variable : '',

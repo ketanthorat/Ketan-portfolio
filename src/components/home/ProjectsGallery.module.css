@@ -1,0 +1,210 @@
+.galleryContainer {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.galleryRow {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.scrollTrack {
+    display: flex;
+    gap: 1.5rem;
+    width: fit-content;
+}
+
+.scrollTrack[data-direction="left"] {
+    animation: scrollLeft 40s linear infinite;
+}
+
+.scrollTrack[data-direction="right"] {
+    animation: scrollRight 40s linear infinite;
+}
+
+.scrollTrack:hover {
+    animation-play-state: paused;
+}
+
+.projectCard {
+    min-width: 320px;
+    height: 200px;
+    background: var(--surface);
+    border: 1px solid var(--neutral-alpha-medium);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.projectCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent-alpha-medium), var(--brand-alpha-medium));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.projectCard:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-alpha-medium);
+    box-shadow: 0 16px 40px var(--neutral-alpha-medium);
+}
+
+.projectCard:hover::before {
+    transform: scaleX(1);
+}
+
+.projectEmoji {
+    font-size: 4rem;
+    transition: transform 0.3s ease;
+}
+
+.projectCard:hover .projectEmoji {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.projectInfo {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.projectTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--neutral-on-background-strong);
+}
+
+.projectCategory {
+    font-size: 0.875rem;
+    color: var(--neutral-on-background-weak);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scrollRight {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .projectCard {
+        min-width: 280px;
+        height: 180px;
+        padding: 1.5rem;
+    }
+
+    .projectEmoji {
+        font-size: 3.5rem;
+    }
+
+    .projectTitle {
+        font-size: 1.125rem;
+    }
+
+    .scrollTrack[data-direction="left"],
+    .scrollTrack[data-direction="right"] {
+        animation-duration: 35s;
+    }
+}
+
+@media (max-width: 768px) {
+    .galleryContainer {
+        gap: 1.5rem;
+        padding: 1.5rem 0;
+    }
+
+    .scrollTrack {
+        gap: 1rem;
+    }
+
+    .projectCard {
+        min-width: 240px;
+        height: 160px;
+        padding: 1.25rem;
+    }
+
+    .projectEmoji {
+        font-size: 3rem;
+    }
+
+    .projectTitle {
+        font-size: 1rem;
+    }
+
+    .projectCategory {
+        font-size: 0.75rem;
+    }
+
+    .scrollTrack[data-direction="left"],
+    .scrollTrack[data-direction="right"] {
+        animation-duration: 30s;
+    }
+}
+
+@media (max-width: 480px) {
+    .galleryContainer {
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+
+    .scrollTrack {
+        gap: 0.75rem;
+    }
+
+    .projectCard {
+        min-width: 200px;
+        height: 140px;
+        padding: 1rem;
+    }
+
+    .projectEmoji {
+        font-size: 2.5rem;
+    }
+
+    .projectTitle {
+        font-size: 0.875rem;
+    }
+
+    .projectCategory {
+        font-size: 0.7rem;
+    }
+
+    .scrollTrack[data-direction="left"],
+    .scrollTrack[data-direction="right"] {
+        animation-duration: 25s;
+    }
+}

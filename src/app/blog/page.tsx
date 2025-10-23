@@ -1,6 +1,7 @@
-import { Column, Flex, Heading } from '@/once-ui/components';
+import { Flex, Heading } from '@/once-ui/components';
 import { Mailchimp } from '@/components';
-import { Posts } from '@/components/blog/Posts';
+import { BlogShowcase } from '@/components/blog/BlogShowcase';
+import { getPosts } from '@/app/utils/utils';
 import { baseURL } from '@/app/resources'
 import { blog, person, newsletter } from '@/app/resources/content';
 
@@ -35,9 +36,18 @@ export async function generateMetadata() {
 }
 
 export default function Blog() {
+	const allBlogs = getPosts(['src', 'app', 'blog', 'posts']);
+	const sortedBlogs = allBlogs.sort((a, b) => {
+		return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
+	});
+
     return (
-			<Column
-				maxWidth="s">
+			<Flex
+				fillWidth
+				direction="column"
+				paddingX="l"
+				paddingY="xl"
+				gap="xl">
 				<script
 					type="application/ld+json"
 					suppressHydrationWarning
@@ -60,19 +70,33 @@ export default function Blog() {
 						}),
 					}}
 				/>
-				<Heading
-						marginBottom="l"
-						variant="display-strong-s">
+				<Flex
+					direction="column"
+					gap="m"
+					maxWidth="xl"
+					alignItems="center"
+					textAlign="center"
+					style={{ margin: '0 auto' }}>
+					<Heading
+						variant="display-strong-xl">
 						{blog.title}
-				</Heading>
-			<Column
-				fillWidth flex={1}>
-				<Posts range={[1,3]} thumbnail/>
-				<Posts range={[4]} columns="2"/>
-			</Column>
+					</Heading>
+					{blog.description && (
+						<Heading
+							variant="heading-default-l"
+							onBackground="neutral-weak"
+							wrap="balance"
+							style={{ maxWidth: '800px' }}>
+							{blog.description}
+						</Heading>
+					)}
+				</Flex>
+				<BlogShowcase posts={sortedBlogs} columns="3" thumbnail/>
 				{newsletter.display && (
+					<Flex maxWidth="m" style={{ margin: '0 auto', width: '100%' }}>
 						<Mailchimp newsletter={newsletter} />
+					</Flex>
 				)}
-			</Column>
+			</Flex>
     );
 }

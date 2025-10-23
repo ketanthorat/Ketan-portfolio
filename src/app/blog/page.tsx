@@ -75,8 +75,7 @@ export default function Blog() {
 					gap="m"
 					maxWidth="xl"
 					alignItems="center"
-					textAlign="center"
-					style={{ margin: '0 auto' }}>
+					style={{ margin: '0 auto', textAlign: 'center' }}>
 					<Heading
 						variant="display-strong-xl">
 						{blog.title}

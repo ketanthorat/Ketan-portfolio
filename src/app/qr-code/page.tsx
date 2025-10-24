@@ -19,18 +19,12 @@ export default function QRCodePage() {
     const socialLinks = [
         { name: 'Instagram', icon: 'instagram', link: 'https://www.instagram.com/ketanthorat.ai' },
         { name: 'LinkedIn', icon: 'linkedin', link: 'https://www.linkedin.com/in/ketanthorat' },
-        { name: 'GitHub', icon: 'github', link: 'https://github.com/ketanthorat' },
-        { name: 'YouTube', icon: 'youtube', link: 'https://www.youtube.com/@ketanthorat-ai' },
-        { name: 'X', icon: 'x', link: 'https://x.com/ketanthorat_ai' },
     ];
 
     const handleSaveContact = () => {
         // Get social media links
-        const github = 'https://github.com/ketanthorat';
         const linkedin = 'https://www.linkedin.com/in/ketanthorat';
-        const twitter = 'https://x.com/ketanthorat_ai';
         const instagram = 'https://www.instagram.com/ketanthorat.ai';
-        const youtube = 'https://www.youtube.com/@ketanthorat-ai';
 
         // Create vCard content
         const vCard = `BEGIN:VCARD
@@ -42,13 +36,10 @@ TITLE:${contactInfo.title}
 TEL;TYPE=CELL:+91${contactInfo.phone1}
 TEL;TYPE=CELL:+91${contactInfo.phone2}
 EMAIL:${contactInfo.email}
-ADR;TYPE=WORK:;;${contactInfo.address};;;;
+ADR;TYPE=WORK:;;Nashik, Maharashtra, India;;;;
 URL:https://${contactInfo.website}
-URL:${github}
 URL:${linkedin}
-URL:${twitter}
 URL:${instagram}
-URL:${youtube}
 NOTE:${contactInfo.role} - Robotics engineer specializing in AI-driven automation, ROS2, and intelligent systems.
 END:VCARD`;
 
@@ -94,7 +85,7 @@ END:VCARD`;
                         {person.role}
                     </Text>
                     <Text variant="body-default-s" onBackground="neutral-weak">
-                        📍 {person.location.replace('Asia/', '')}
+                        📍 Nashik, Maharashtra
                     </Text>
                 </Flex>
 
@@ -144,7 +135,7 @@ END:VCARD`;
                         🏢 {contactInfo.company} ({contactInfo.title})
                     </Text>
                     <Text variant="body-default-s" onBackground="neutral-medium">
-                        📍 {contactInfo.address}
+                        📍 Nashik, Maharashtra, India
                     </Text>
                     <Text variant="body-default-s" onBackground="neutral-medium">
                         🌐 {contactInfo.website}
@@ -165,34 +156,42 @@ END:VCARD`;
                 </Button>
             </Flex>
 
-            {/* Social Links */}
+            {/* Social Media Section */}
             <Flex
                 direction="column"
                 fillWidth
-                gap="s"
+                gap="m"
                 style={{ maxWidth: '400px' }}
             >
-                {socialLinks.map((item, index) => (
-                    <Button
-                        key={index}
-                        href={item.link}
-                        variant="tertiary"
-                        size="m"
-                        fillWidth
-                        prefixIcon={item.icon}
-                        style={{
-                            justifyContent: 'flex-start',
-                            textAlign: 'left'
-                        }}
-                    >
-                        <Flex fillWidth justifyContent="space-between" alignItems="center">
-                            <Text variant="body-default-s">
-                                {item.name}
-                            </Text>
-                            <Icon name="chevronRight" size="s" />
-                        </Flex>
-                    </Button>
-                ))}
+                <Text 
+                    variant="heading-strong-l" 
+                    align="center"
+                    onBackground="neutral-strong"
+                >
+                    Social Media
+                </Text>
+                <Flex
+                    direction="row"
+                    fillWidth
+                    gap="m"
+                    justifyContent="center"
+                >
+                    {socialLinks.map((item, index) => (
+                        <Button
+                            key={index}
+                            href={item.link}
+                            variant="secondary"
+                            size="l"
+                            prefixIcon={item.icon}
+                            style={{
+                                flex: 1,
+                                minWidth: '0'
+                            }}
+                        >
+                            {item.name}
+                        </Button>
+                    ))}
+                </Flex>
             </Flex>
         </Flex>
     );

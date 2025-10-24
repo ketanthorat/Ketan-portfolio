@@ -59,13 +59,12 @@ END:VCARD`;
     return (
         <Flex
             fillWidth
-            minHeight="100vh"
             direction="column"
             alignItems="center"
             justifyContent="center"
             padding="l"
             gap="l"
-            style={{ maxWidth: '480px', margin: '0 auto' }}
+            style={{ maxWidth: '480px', margin: '0 auto', minHeight: '100vh' }}
         >
             {/* Profile Section */}
             <Flex

@@ -76,7 +76,6 @@ END:VCARD`;
                 <Avatar
                     size="xl"
                     src={person.avatar}
-                    alt={person.name}
                 />
                 
                 <Flex direction="column" gap="xs" alignItems="center">

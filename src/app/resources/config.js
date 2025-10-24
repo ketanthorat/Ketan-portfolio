@@ -7,6 +7,7 @@ const routes = {
     '/blog':      true,
     '/workshops': true,
     '/gallery':   false,
+    '/qr-code':   true,
 }
 
 // Enable password protection on selected routes

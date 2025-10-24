@@ -36,12 +36,12 @@ const social = [
     },
     {
         name: 'Instagram',
-        icon: 'Instagram',
+        icon: 'instagram',
         link: 'https://www.instagram.com/ketanthorat.ai',
     },
     {
         name: 'YouTube',
-        icon: 'Youtube',
+        icon: 'youtube',
         link: 'https://www.youtube.com/@ketanthorat-ai',
     },
     {

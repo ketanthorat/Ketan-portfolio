@@ -16,13 +16,21 @@ export default function QRCodePage() {
         role: person.role
     };
 
+    const socialLinks = [
+        { name: 'Instagram', icon: 'instagram', link: 'https://www.instagram.com/ketanthorat.ai' },
+        { name: 'LinkedIn', icon: 'linkedin', link: 'https://www.linkedin.com/in/ketanthorat' },
+        { name: 'GitHub', icon: 'github', link: 'https://github.com/ketanthorat' },
+        { name: 'YouTube', icon: 'youtube', link: 'https://www.youtube.com/@ketanthorat-ai' },
+        { name: 'X', icon: 'x', link: 'https://x.com/ketanthorat_ai' },
+    ];
+
     const handleSaveContact = () => {
         // Get social media links
-        const github = social.find(s => s.name === 'GitHub')?.link || '';
-        const linkedin = social.find(s => s.name === 'LinkedIn')?.link || '';
-        const twitter = social.find(s => s.name === 'X')?.link || '';
-        const instagram = social.find(s => s.name === 'Instagram')?.link || '';
-        const youtube = social.find(s => s.name === 'YouTube')?.link || '';
+        const github = 'https://github.com/ketanthorat';
+        const linkedin = 'https://www.linkedin.com/in/ketanthorat';
+        const twitter = 'https://x.com/ketanthorat_ai';
+        const instagram = 'https://www.instagram.com/ketanthorat.ai';
+        const youtube = 'https://www.youtube.com/@ketanthorat-ai';
 
         // Create vCard content
         const vCard = `BEGIN:VCARD
@@ -127,7 +135,7 @@ END:VCARD`;
                 </Text>
                 <Flex direction="column" gap="xs">
                     <Text variant="body-default-s" onBackground="neutral-medium">
-                        📞 {contactInfo.phone1} / {contactInfo.phone2}
+                        📞 +91 {contactInfo.phone1} / +91 {contactInfo.phone2}
                     </Text>
                     <Text variant="body-default-s" onBackground="neutral-medium">
                         ✉️ {contactInfo.email}
@@ -144,6 +152,19 @@ END:VCARD`;
                 </Flex>
             </Flex>
 
+            {/* Explore Profile Button */}
+            <Flex fillWidth style={{ maxWidth: '400px' }}>
+                <Button
+                    href="https://ketanthorat.com/"
+                    variant="secondary"
+                    size="l"
+                    fillWidth
+                    prefixIcon="globe"
+                >
+                    Explore Profile
+                </Button>
+            </Flex>
+
             {/* Social Links */}
             <Flex
                 direction="column"
@@ -151,47 +172,27 @@ END:VCARD`;
                 gap="s"
                 style={{ maxWidth: '400px' }}
             >
-                {social.map((item, index) => {
-                    const isEmail = item.name === 'Email';
-                    const href = isEmail ? `mailto:${item.link}` : item.link;
-                    
-                    return (
-                        <Button
-                            key={index}
-                            href={href}
-                            variant="secondary"
-                            size="l"
-                            fillWidth
-                            prefixIcon={item.icon}
-                            style={{
-                                justifyContent: 'flex-start',
-                                textAlign: 'left'
-                            }}
-                        >
-                            <Flex fillWidth justifyContent="space-between" alignItems="center">
-                                <Text variant="body-default-m">
-                                    {item.name}
-                                </Text>
-                                <Icon name="chevronRight" size="s" />
-                            </Flex>
-                        </Button>
-                    );
-                })}
-            </Flex>
-
-            {/* Languages */}
-            <Flex
-                direction="column"
-                gap="xs"
-                alignItems="center"
-                style={{ marginTop: '1rem' }}
-            >
-                <Text variant="label-default-s" onBackground="neutral-weak">
-                    Languages
-                </Text>
-                <Text variant="body-default-s" onBackground="neutral-medium">
-                    {person.languages.join(' • ')}
-                </Text>
+                {socialLinks.map((item, index) => (
+                    <Button
+                        key={index}
+                        href={item.link}
+                        variant="tertiary"
+                        size="m"
+                        fillWidth
+                        prefixIcon={item.icon}
+                        style={{
+                            justifyContent: 'flex-start',
+                            textAlign: 'left'
+                        }}
+                    >
+                        <Flex fillWidth justifyContent="space-between" alignItems="center">
+                            <Text variant="body-default-s">
+                                {item.name}
+                            </Text>
+                            <Icon name="chevronRight" size="s" />
+                        </Flex>
+                    </Button>
+                ))}
             </Flex>
         </Flex>
     );

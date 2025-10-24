@@ -1,0 +1,136 @@
+import "@/once-ui/styles/index.scss";
+import "@/once-ui/tokens/index.scss";
+
+import classNames from 'classnames';
+import { baseURL, effects, style } from '@/app/resources';
+import { Inter } from 'next/font/google';
+import { Source_Code_Pro } from 'next/font/google';
+import { person, home } from '@/app/resources/content';
+import { Background, Flex } from "@/once-ui/components";
+
+export async function generateMetadata() {
+    return {
+        metadataBase: new URL(`https://${baseURL}`),
+        title: `${person.name} - Contact Card`,
+        description: 'Digital contact card for Ketan Thorat',
+        openGraph: {
+            title: `${person.name} - Contact Card`,
+            description: 'Digital contact card',
+            url: `${baseURL}/qr-code`,
+            siteName: `${person.firstName}'s Contact`,
+            locale: 'en_US',
+            type: 'website',
+        },
+        robots: {
+            index: false,
+            follow: false,
+        },
+    };
+}
+
+const primary = Inter({
+    variable: '--font-primary',
+    subsets: ['latin'],
+    display: 'swap',
+});
+
+type FontConfig = {
+    variable: string;
+};
+
+const secondary: FontConfig | undefined = undefined;
+const tertiary: FontConfig | undefined = undefined;
+
+const code = Source_Code_Pro({
+    variable: '--font-code',
+    subsets: ['latin'],
+    display: 'swap',
+});
+
+interface QRCodeLayoutProps {
+    children: React.ReactNode;
+}
+
+export default async function QRCodeLayout({ children }: QRCodeLayoutProps) {
+    return (
+        <Flex
+            as="html"
+            lang="en"
+            background="page"
+            data-neutral={style.neutral}
+            data-brand={style.brand}
+            data-accent={style.accent}
+            data-solid={style.solid}
+            data-solid-style={style.solidStyle}
+            data-theme={style.theme}
+            data-border={style.border}
+            data-surface={style.surface}
+            data-transition={style.transition}
+            style={{ scrollBehavior: 'smooth' }}
+            className={classNames(
+                primary.variable,
+                secondary ? secondary.variable : '',
+                tertiary ? tertiary.variable : '',
+                code.variable
+            )}
+        >
+            <Flex
+                style={{ minHeight: '100vh' }}
+                as="body"
+                fillWidth
+                margin="0"
+                padding="0"
+                direction="column"
+            >
+                <Background
+                    mask={{
+                        cursor: effects.mask.cursor,
+                        x: effects.mask.x,
+                        y: effects.mask.y,
+                        radius: effects.mask.radius,
+                    }}
+                    gradient={{
+                        display: effects.gradient.display,
+                        x: effects.gradient.x,
+                        y: effects.gradient.y,
+                        width: effects.gradient.width,
+                        height: effects.gradient.height,
+                        tilt: effects.gradient.tilt,
+                        colorStart: effects.gradient.colorStart,
+                        colorEnd: effects.gradient.colorEnd,
+                        opacity: effects.gradient.opacity as
+                            | 0
+                            | 10
+                            | 20
+                            | 30
+                            | 40
+                            | 50
+                            | 60
+                            | 70
+                            | 80
+                            | 90
+                            | 100,
+                    }}
+                    dots={{
+                        display: effects.dots.display,
+                        color: effects.dots.color,
+                        size: effects.dots.size as any,
+                        opacity: effects.dots.opacity as any,
+                    }}
+                    grid={{
+                        display: effects.grid.display,
+                        color: effects.grid.color,
+                        width: effects.grid.width as any,
+                        height: effects.grid.height as any,
+                        opacity: effects.grid.opacity as any,
+                    }}
+                    lines={{
+                        display: effects.lines.display,
+                        opacity: effects.lines.opacity as any,
+                    }}
+                />
+                {children}
+            </Flex>
+        </Flex>
+    );
+}

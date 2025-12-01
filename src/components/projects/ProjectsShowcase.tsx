@@ -60,7 +60,7 @@ const projectsData: Project[] = [
             'Integrated ROS2 nodes for image acquisition, path planning, and drone hardware control'
         ],
         techStack: ['ROS2', 'YOLOv5', 'TensorFlow', 'OpenCV', 'Python', 'Gazebo', 'Streamlit'],
-        image: '/images/projects/Fast%20Following.jpg',
+        image: '/images/projects/4DOF.jpg',
         category: 'ros'
     },
     {
@@ -147,7 +147,7 @@ const projectsData: Project[] = [
             'Achieved record-breaking lap times in college-level competitions'
         ],
         techStack: ['Arduino', 'IR Array Sensors', 'PID Control', 'DC Motors'],
-        image: '/images/projects/line-follower.jpg',
+        image: '/images/projects/Fast%20Following.jpg',
         category: 'competition'
     },
     {
@@ -250,10 +250,7 @@ export function ProjectsShowcase() {
                                     <div className={styles.projectImage}>
                                         {project.image ? (
                                             <div className={styles.imagePlaceholder} style={{
-                                                backgroundImage: `url(${project.image})`,
-                                                backgroundSize: 'cover',
-                                                backgroundPosition: 'center',
-                                                backgroundRepeat: 'no-repeat'
+                                                backgroundImage: `url(${project.image})`
                                             }}>
                                             </div>
                                         ) : (

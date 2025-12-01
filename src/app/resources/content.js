@@ -104,7 +104,7 @@ const about = {
     intro: {
         display: true,
         title: 'Introduction',
-        description: <>Hi, I'm Ketan Thorat—a passionate robotics engineer, innovator, and entrepreneur driving advancements in robotics, AI, IoT, and automation. Explore my portfolio to discover my journey, projects, and vision for the future of robotics and automation.</>
+        description: <>Hi, I'm Ketan Thorat—a passionate robotics engineer, innovator, and entrepreneur driving advancements in robotics, AI, IoT, and automation. I speak English, Hindi, Marathi, and German (A2). Explore my portfolio to discover my journey, projects, and vision for the future of robotics and automation.</>
     },
     work: {
         display: true,
@@ -113,11 +113,11 @@ const about = {
             {
                 company: 'Robonex Innovations',
                 timeframe: 'Jan 2020 - Present',
-                role: 'Founder & Robotics Engineer',
+                role: 'Founder & ROS Developer',
                 achievements: [
                     <>Founded a robotics and AI startup delivering innovative solutions in automation, ROS2, and IoT integration.</>,
                     <>Designed and deployed custom robotic systems, including AMRs, robotic arms, and sensor-based automation.</>,
-                    <>Conducted robotics workshops and community sessions across institutions to foster tech innovation.</>,
+                    <>Conducted 10+ robotics workshops and community sessions across institutions to foster tech innovation.</>,
                     <>Led a small R&D team in developing open-source robotics tools and educational robotics kits for students.</>
                 ],
                 images: []

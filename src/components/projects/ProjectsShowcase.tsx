@@ -20,8 +20,8 @@ const projectsData: Project[] = [
     {
         id: 'lidar-amr',
         title: 'LiDAR-Based AMR for Navigation, Obstacle Detection & Pallet Detection',
-        year: '2025 (Ongoing)',
-        organization: 'Fox Solutions Pvt. Ltd. (Final Year Industrial Project)',
+        year: '2025',
+        organization: 'Fox Solutions Pvt Ltd x KKW Dept of Robotics & Automation',
         description: 'Developed an Autonomous Mobile Robot (AMR) for industrial environments to enhance material handling efficiency and safety.',
         achievements: [
             'Integrated LiDAR sensors with ROS2 for real-time navigation, obstacle detection, and pallet recognition',
@@ -30,7 +30,7 @@ const projectsData: Project[] = [
             'Deployed on an industrial test floor for validation and efficiency benchmarking'
         ],
         techStack: ['ROS2', 'Python', 'LiDAR', 'Gazebo', 'OpenCV', 'RViz', 'Arduino', 'SLAM'],
-        image: '/images/projects/lidar-amr.jpg',
+        image: '/images/projects/AMR%20-ffox.png',
         category: 'industrial'
     },
     {
@@ -45,7 +45,7 @@ const projectsData: Project[] = [
             'Focused on improving developer productivity by combining NLP and code understanding models'
         ],
         techStack: ['Python', 'LLMs (Ollama)', 'GitHub API', 'RAG Pipeline', 'Command-Line Automation'],
-        image: '/images/projects/octo-cli.jpg',
+        image: '/images/projects/Octocli.png',
         category: 'ai'
     },
     {
@@ -60,7 +60,7 @@ const projectsData: Project[] = [
             'Integrated ROS2 nodes for image acquisition, path planning, and drone hardware control'
         ],
         techStack: ['ROS2', 'YOLOv5', 'TensorFlow', 'OpenCV', 'Python', 'Gazebo', 'Streamlit'],
-        image: '/images/projects/apple-drone.jpg',
+        image: '/images/projects/Fast%20Following.jpg',
         category: 'ros'
     },
     {
@@ -75,7 +75,7 @@ const projectsData: Project[] = [
             'Demonstrated potential for assistive robotics and rehabilitation applications'
         ],
         techStack: ['ROS2', 'Arduino', 'Python', 'Servo Motors', 'Serial Communication'],
-        image: '/images/projects/prosthetic-hand.jpg',
+        image: '/images/projects/Prosthetic.jpg',
         category: 'ros'
     },
     {
@@ -90,7 +90,7 @@ const projectsData: Project[] = [
             'Calibrated motion parameters for repeatability and speed optimization'
         ],
         techStack: ['ROS2', 'Python', 'Arduino', 'SolidWorks', 'Servo Motors', 'Kinematics'],
-        image: '/images/projects/robotic-arm.jpg',
+        image: '/images/projects/4DOF.jpg',
         category: 'robotics'
     },
     {
@@ -104,7 +104,7 @@ const projectsData: Project[] = [
             'Designed chassis and linkages to simulate off-road mobility and obstacle climbing'
         ],
         techStack: ['Embedded C', 'Arduino', 'DC Motors', 'Mechanical Design', 'Sensors'],
-        image: '/images/projects/rocker-bogie.jpg',
+        image: '/images/projects/Rocker%20Bogie.jpg',
         category: 'robotics'
     },
     {
@@ -119,7 +119,7 @@ const projectsData: Project[] = [
             'Focused on sustainability and water conservation in agricultural automation'
         ],
         techStack: ['Arduino', 'GSM Module', 'Sensors (Soil Moisture, Ultrasonic)', 'Embedded C'],
-        image: '/images/projects/smart-irrigation.jpg',
+        image: '/images/projects/GSM%20.jpg',
         category: 'iot'
     },
     {
@@ -133,7 +133,7 @@ const projectsData: Project[] = [
             'Tuned the control logic for aggressive movement and rapid response in competition environments'
         ],
         techStack: ['Arduino', 'IR Sensors', 'Ultrasonic Sensors', 'DC Motors'],
-        image: '/images/projects/sumo-robot.jpg',
+        image: '/images/projects/Autonomous%20Sumo%20robot.png',
         category: 'competition'
     },
     {
@@ -161,7 +161,7 @@ const projectsData: Project[] = [
             'Implemented path optimization logic for efficient exit identification'
         ],
         techStack: ['Arduino', 'Ultrasonic Sensors', 'C Programming', 'Path Planning'],
-        image: '/images/projects/maze-solver.jpg',
+        image: '/images/projects/maze.webp',
         category: 'robotics'
     },
     {
@@ -175,7 +175,7 @@ const projectsData: Project[] = [
             'Served as a foundation project for further work in autonomous robotics and AMR systems'
         ],
         techStack: ['Arduino', 'IR Sensors', 'Ultrasonic Sensors', 'C Programming'],
-        image: '/images/projects/obstacle-avoiding.jpg',
+        image: '/images/projects/Obstacle%20Avoidance%20Robot.jpg',
         category: 'robotics'
     }
 ];
@@ -248,11 +248,21 @@ export function ProjectsShowcase() {
                                 >
                                     {/* Project Image */}
                                     <div className={styles.projectImage}>
-                                        <div className={styles.imagePlaceholder}>
-                                            <Text variant="heading-strong-xl">
-                                                {project.title.charAt(0)}
-                                            </Text>
-                                        </div>
+                                        {project.image ? (
+                                            <div className={styles.imagePlaceholder} style={{
+                                                backgroundImage: `url(${project.image})`,
+                                                backgroundSize: 'cover',
+                                                backgroundPosition: 'center',
+                                                backgroundRepeat: 'no-repeat'
+                                            }}>
+                                            </div>
+                                        ) : (
+                                            <div className={styles.imagePlaceholder}>
+                                                <Text variant="heading-strong-xl">
+                                                    {project.title.charAt(0)}
+                                                </Text>
+                                            </div>
+                                        )}
                                     </div>
 
                                     {/* Project Details */}
